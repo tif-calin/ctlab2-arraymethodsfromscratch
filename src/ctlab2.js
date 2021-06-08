@@ -8,9 +8,7 @@ export function map(arr, callback) {
 
 export function filter(arr, callback) {
   const newArr = [];
-  for(const elem of arr) {
-    if(callback(elem)) newArr[newArr.length] = elem;
-  }
+  for(const elem of arr) if(callback(elem)) newArr[newArr.length] = elem;
 
   return newArr;
 }
