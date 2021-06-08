@@ -1,4 +1,4 @@
-import { map } from './ctlab2.js';
+import { filter, map } from './ctlab2.js';
 
 describe('map', () => {
   it('expect map to square each element', () => {
@@ -28,9 +28,9 @@ describe('filter', () => {
   it('filter out odd numbers', () => {
     const input = [
       [0, -5, 34, 3, 14, -2],
-      n => n % 2
+      n => (n + 1) % 2
     ];
-    const actual = map(...input);
+    const actual = filter(...input);
     const expected = [0, 34, 14, -2];
 
     expect(actual).toEqual(expected);
