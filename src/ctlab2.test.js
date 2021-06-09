@@ -1,3 +1,5 @@
+/*eslint-disable no-sparse-arrays*/
+
 import { every, filter, findIndex, map, reduce } from './ctlab2.js';
 
 describe('map', () => {
@@ -8,6 +10,17 @@ describe('map', () => {
     ];
     const actual = map(...input);
     const expected = [0, 25, 1156, 9];
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('expect map to square each element and skip holes', () => { 
+    const input = [
+      [0, , , -5, 34, 3],
+      n => n ** 2
+    ];
+    const actual = map(...input);
+    const expected = [0, , , 25, 1156, 9];
 
     expect(actual).toEqual(expected);
   });
@@ -45,6 +58,22 @@ describe('findIndex', () => {
     ];
     const actual = findIndex(...input);
     const expected = 2;
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('return the first object with a name property', () => {
+    const input = [
+      [
+        { item: 'chair', legs: 4, wheels: false },
+        { item: 'eucalyptus', species: 'grandis', pollination: 'wind' },
+        { item: 'jar', recyclable: true },
+        { item: 'star', name: 'Polaris', constellation: 'Ursa Minor' }
+      ],
+      item => item.name
+    ];
+    const actual = findIndex(...input);
+    const expected = 3;
 
     expect(actual).toEqual(expected);
   });

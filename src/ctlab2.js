@@ -40,7 +40,7 @@ export function reduce(arr, callback, initialValue) {
   // loop through our array, and for each element:
   //    call the callback on that element as well as the accumulator
   //    set the accumulator equal to the result of that
-  for(const elem of arr) {
+  for(const elem of initialValue ? arr : arr.slice(1)) {
     // skip "holes" by making sure each element is not undefined
     if(elem !== undefined) acc = callback(acc, elem);
   }
