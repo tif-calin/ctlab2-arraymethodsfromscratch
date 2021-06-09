@@ -34,5 +34,17 @@ export function findIndex(arr, callback) {
 }
 
 export function reduce(arr, callback, initialValue) {
-  return;
+  // initialize our accumulator as initialValue (if exists) or the first element of the array
+  let acc = initialValue || arr[0];
+
+  // loop through our array, and for each element:
+  //    call the callback on that element as well as the accumulator
+  //    set the accumulator equal to the result of that
+  for(const elem of arr) {
+    const newAccumulation = callback(acc, elem);
+    acc = newAccumulation;
+  }
+
+  // return the accumulator
+  return acc;
 }
