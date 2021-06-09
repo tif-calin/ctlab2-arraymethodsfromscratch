@@ -57,7 +57,7 @@ export function every(arr, callback) {
   */
 
   for(const elem of arr) {
-    // check for holes
+    // don't forget to check for holes
     if(elem !== undefined && !callback(elem)) return false;
   }
 
