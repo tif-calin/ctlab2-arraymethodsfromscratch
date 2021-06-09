@@ -41,7 +41,7 @@ describe('findIndex', () => {
   it('find a number in a list of numbers', () => {
     const input = [
       [0, -5, 34, 3, 14, -2],
-      34
+      item => item === 34
     ];
     const actual = findIndex(...input);
     const expected = 2;
@@ -52,7 +52,7 @@ describe('findIndex', () => {
   it('returns -1 for missing element', () => {
     const input = [
       [0, -5, 34, 3, 14, -2],
-      'h'
+      item => item === 'h'
     ];
     const actual = findIndex(...input);
     const expected = -1;
