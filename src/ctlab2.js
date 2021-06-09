@@ -32,3 +32,7 @@ export function findIndex(arr, callback) {
 
   return -1;
 }
+
+export function reduce(arr, callback, initialValue) {
+  return;
+}

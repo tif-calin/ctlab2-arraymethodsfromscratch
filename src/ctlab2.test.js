@@ -1,4 +1,4 @@
-import { filter, findIndex, map } from './ctlab2.js';
+import { filter, findIndex, map, reduce } from './ctlab2.js';
 
 describe('map', () => {
   it('expect map to square each element', () => {
@@ -56,6 +56,19 @@ describe('findIndex', () => {
     ];
     const actual = findIndex(...input);
     const expected = -1;
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe('reduce', () => {
+  it('sum an array of numbers', () => {
+    const input = [
+      [0, -5, 34, 3, 14, -2],
+      (acc, item) => acc += item
+    ];
+    const actual = reduce(...input);
+    const expected = 44;
 
     expect(actual).toEqual(expected);
   });
