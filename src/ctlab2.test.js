@@ -101,6 +101,17 @@ describe('reduce', () => {
 
     expect(actual).toEqual(expected);
   });
+
+  it('sum an array of numbers with holes', () => {
+    const input = [
+      [0, -5, 34,,, 3, 14,, -2],
+      (acc, item) => acc += item
+    ];
+    const actual = reduce(...input);
+    const expected = 44;
+
+    expect(actual).toEqual(expected);
+  });
 });
 
 describe('every', () => {

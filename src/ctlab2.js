@@ -44,11 +44,33 @@ export function reduce(arr, callback, initialValue) {
   //    call the callback on that element as well as the accumulator
   //    set the accumulator equal to the result of that
   for(let i = initialValue ? 0 : 1; i < arr.length; i++)
-    if(arr.hasOwnProperty(i)) acc = callback(acc, arr[i]);
+    if(arr.hasOwnProperty(i)) 
+      acc = callback(acc, arr[i]);
 
   // return the accumulator
   return acc;
 }
+
+/*
+alternative reduce solution 
+
+export function reduce(arr, callback, initialValue) {
+  let acc;
+
+  for(let i = 0; i < arr.length; i++) {
+
+    if(arr.hasOwnProperty(i)) {
+      if(i === 0)
+        acc = initialValue ? callback(initialValue, arr[0]) : arr[0];
+      else 
+        acc = callback(acc, arr[i]);
+    }
+
+  }
+
+  return acc;
+}
+*/
 
 export function every(arr, callback) {
   /* here's the plan:
