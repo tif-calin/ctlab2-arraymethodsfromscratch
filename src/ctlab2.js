@@ -50,5 +50,16 @@ export function reduce(arr, callback, initialValue) {
 }
 
 export function every(arr, callback) {
-  return;
+  /* here's the plan:
+      1. we're gonna loop through our array and call the callback on each element
+      2. as soon as we get an element that returns false, we return false as well, ending the loop
+      3. if we never get false and the loop ends quietly, we return true
+  */
+
+  for(const elem of arr) {
+    // check for holes
+    if(elem !== undefined && !callback(elem)) return false;
+  }
+
+  return true;
 }
