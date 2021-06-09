@@ -42,10 +42,7 @@ export function reduce(arr, callback, initialValue) {
   //    set the accumulator equal to the result of that
   for(const elem of arr) {
     // skip "holes" by making sure each element is not undefined
-    if(elem !== undefined) {
-      const newAccumulation = callback(acc, elem);
-      acc = newAccumulation;
-    }
+    if(elem !== undefined) acc = callback(acc, elem);
   }
 
   // return the accumulator
