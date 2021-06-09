@@ -48,3 +48,7 @@ export function reduce(arr, callback, initialValue) {
   // return the accumulator
   return acc;
 }
+
+export function every(arr, callback) {
+  return;
+}

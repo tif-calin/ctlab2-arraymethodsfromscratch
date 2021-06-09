@@ -1,4 +1,4 @@
-import { filter, findIndex, map, reduce } from './ctlab2.js';
+import { every, filter, findIndex, map, reduce } from './ctlab2.js';
 
 describe('map', () => {
   it('expect map to square each element', () => {
@@ -69,6 +69,30 @@ describe('reduce', () => {
     ];
     const actual = reduce(...input);
     const expected = 44;
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe('every', () => {
+  it('check if every number is even', () => {
+    const input = [
+      [0, -5, 34, 3, 14, -2],
+      num => num % 2
+    ];
+    const actual = every(...input);
+    const expected = false;
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('check if every string starts with a constant', () => {
+    const input = [
+      ['vote', 'book', 'call', 'four', 'loop', 'SAND', 'rOCK', 'Vibe'],
+      str => !'aeiou'.split('').includes(str[0].toLowerCase())
+    ];
+    const actual = every(...input);
+    const expected = true;
 
     expect(actual).toEqual(expected);
   });
