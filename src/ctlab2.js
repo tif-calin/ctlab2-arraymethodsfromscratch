@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 /*
 export function map(arr, callback) {
   const newArr = [];
@@ -13,14 +14,16 @@ export function map(arr, callback) {
 
 export function map(arr, callback) {
   const newArr = [];
-  for(let i = 0; i < arr.length; i++) if(arr[i] !== undefined) newArr[i] = callback(arr[i]);
+  for(let i = 0; i < arr.length; i++) 
+    if(arr.hasOwnProperty(i)) newArr[i] = callback(arr[i]);
 
   return newArr;
 }
 
 export function filter(arr, callback) {
   const newArr = [];
-  for(const elem of arr)  if(elem !== undefined && callback(elem)) newArr[newArr.length] = elem;
+  for(let i = 0; i < arr.length; i++)  
+    if(arr.hasOwnProperty(i) && callback(arr[i])) newArr[newArr.length] = arr[i];
 
   return newArr;
 }
@@ -40,10 +43,8 @@ export function reduce(arr, callback, initialValue) {
   // loop through our array, and for each element:
   //    call the callback on that element as well as the accumulator
   //    set the accumulator equal to the result of that
-  for(const elem of initialValue ? arr : arr.slice(1)) {
-    // skip "holes" by making sure each element is not undefined
-    if(elem !== undefined) acc = callback(acc, elem);
-  }
+  for(let i = initialValue ? 0 : 1; i < arr.length; i++)
+    if(arr.hasOwnProperty(i)) acc = callback(acc, arr[i]);
 
   // return the accumulator
   return acc;
@@ -56,9 +57,9 @@ export function every(arr, callback) {
       3. if we never get false and the loop ends quietly, we return true
   */
 
-  for(const elem of arr) {
+  for(let i = 0; i < arr.length; i++) {
     // don't forget to check for holes
-    if(elem !== undefined && !callback(elem)) return false;
+    if(arr.hasOwnProperty(i) && !callback(arr[i])) return false;
   }
 
   return true;
