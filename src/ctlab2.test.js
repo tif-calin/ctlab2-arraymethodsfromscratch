@@ -48,4 +48,15 @@ describe('findIndex', () => {
 
     expect(actual).toEqual(expected);
   });
+
+  it('returns -1 for missing element', () => {
+    const input = [
+      [0, -5, 34, 3, 14, -2],
+      'h'
+    ];
+    const actual = findIndex(...input);
+    const expected = -1;
+
+    expect(actual).toEqual(expected);
+  });
 });

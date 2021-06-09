@@ -1,21 +1,4 @@
 /*
-
-const arr = [0, -5, 34, 3];
-
-arr.map(n => n ** 2);
-
-function map = ...
-
-const callback = n => n ** 2;
-map(arr, callback);
-
-function callback(n) {
-  return n + 5;
-}
-
-*/
-
-/*
 export function map(arr, callback) {
   const newArr = [];
 
@@ -43,5 +26,9 @@ export function filter(arr, callback) {
 }
 
 export function findIndex(arr, elem) {
-  return;
+  for(let i = 0; i < arr.length; i++) {
+    if(arr[i] === elem) return i;
+  }
+
+  return -1;
 }
